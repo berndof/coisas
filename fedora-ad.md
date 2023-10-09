@@ -1,3 +1,9 @@
+# Geral
+
+### DNS 
+
+Configurações>Rede>Conexões>ipv4
+
 ```bash
 sudo dnf install realmd sssd oddjob oddjob-mkhomedir adcli samba-common-tools -y
 sudo dnf install krb5-workstation -y
@@ -15,6 +21,15 @@ sudo nano /etc/krb5.conf
 ```
 ```
 [libdefaults]
+    dns_lookup_realm = false
+    ticket_lifetime = 24h
+    renew_lifetime = 7dQ
+    forwardable = true
+    rdns = false
+    pkinit_anchors = FILE:/etc/pki/tls/certs/ca-bundle.crt
+    spake_preauth_groups = edwards25519
+    dns_canonicalize_hostname = fallback
+    qualify_shortname = ""
     default_realm = SCCLGS.INTRA
     default_tkt_enctypes = aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 arcfour-hmac
     default_tgs_enctypes = aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 arcfour-hmac
