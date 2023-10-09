@@ -1,13 +1,18 @@
 # Geral
 
 ### DNS 
-
+```
 Configurações>Rede>Conexões>ipv4
+```
 
+### Dependencias
 ```bash
 sudo dnf install realmd sssd oddjob oddjob-mkhomedir adcli samba-common-tools -y
 sudo dnf install krb5-workstation -y
+```
 
+### Buscar o dominio
+```
 sudo realm discover DOMÍNIO
 
 sudo realm join DOMÍNIO -v --user USUARIO
